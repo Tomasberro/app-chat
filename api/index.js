@@ -5,7 +5,7 @@ const { conn } = require('./src/db.js');
 const port =  3001;
 
 
-conn.sync({ force: true}).then( () => {
+conn.sync({ force: false}).then( () => {
   httpserver.listen(port, async () => {
     console.log(`Server listen in ${process.env.NODE_ENV} port ${port}`); 
   });

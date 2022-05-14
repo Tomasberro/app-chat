@@ -4,6 +4,7 @@ const userModel = require('./models/User');
 const messageModel = require('./models/Message');
 const chatModel = require('./models/Chat');
 const complaintModel = require('./models/Complaint');
+const userChatModel = require('./models/UserChat');
 
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
@@ -39,8 +40,10 @@ userModel(sequelize);
 messageModel(sequelize);
 chatModel(sequelize);
 complaintModel(sequelize);
+userChatModel(sequelize);
 
-const { User, Message, Chat, Complaint } = sequelize.models;
+
+const { User, Message, Chat, Complaint, UserChat } = sequelize.models;
 
 User.hasMany(Message)
 Message.belongsTo(User)
@@ -48,8 +51,8 @@ Message.belongsTo(User)
 User.hasMany(Complaint)
 Complaint.belongsTo(User)
 
-User.belongsToMany(Chat, { through: 'UserChat' });
-Chat.belongsToMany(User, { through: 'UserChat' });
+User.belongsToMany(Chat, { through: UserChat });
+Chat.belongsToMany(User, { through: UserChat });
 
 module.exports = {
     ...sequelize.models, 

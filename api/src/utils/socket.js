@@ -1,19 +1,27 @@
-// const {io} = require('../app.js');
+// const {httpserver} = require('../app')
 
+// const io = new Server(httpserver, {
+//       cors: {
+//         origin: "http://localhost:3000",
+//         methods: ["GET", "POST"]
+//       }
+//     });
 
-// io.on('connection', (socket) => {
-//     // console.log('a user connected');
-//     socket.emit('conectadoapi', () => {
-//         console.log('user connected api');
-//     }
-//     );
-//     socket.on('conectadoclient', () => {
-//         console.log('user connected client');
-//     }
-//     );
-//     // socket.on('chat message', (msg) => {
-//     //     io.emit('chat message', msg);
-//     // }
-//     // );
-// }
-// );
+//     io.on('connection', (socket) => {
+//         let userId;
+      
+//         socket.on('conectadoclient', (user) => {
+//           userId= user;
+//           socket.broadcast.emit('messages', {userId: userId, message: `${userId} se ha conectado al chat`});
+//         }
+//         );
+//         socket.on('message', (message, userId) => {
+//             io.emit('messages', {message, userId});
+//         }
+//         );
+//         socket.on('disconnect', () => {
+//             io.emit('messages', {userId , message: `${userId} se ha desconectado del chat `});
+//         }
+//         );
+//       }
+//       );
